@@ -1,0 +1,20 @@
+{
+  "type": "panel",
+  "name": "Net Status Panel",
+  "id": "net-status-panel",
+
+  "info": {
+    "author": {
+      "name": "DreamCorp",
+      "url": "\"https://github.com/DreamCorpSWE"
+    },
+    "logos": {
+      "small": "img/net-status.png",
+      "large": "img/net-status.png"
+    }
+  },
+  "dependencies": {
+    "grafanaVersion": "5.4.x"
+  }
+}
+

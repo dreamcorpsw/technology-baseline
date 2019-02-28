@@ -1,0 +1,92 @@
+<div class="editor-row">
+    <!-- Configuration -->
+    <div class="section gf-form-group" ng-if="!editor.associated && editor.networks">
+        <h5 class="section-heading">Configure</h5>
+
+        <div class="gf-form" >
+            <span class="gf-form-label width-10">Bayesian Network:</span>
+            <div class="gf-form-select-wrapper min-width-10">
+                <select  class="gf-form-input" ng-model="ctrl.panel.rete_id" ng-options="rete.rete for rete in editor.networks" ng-change="editor.setNet(ctrl.panel.rete_id)"></select>
+            </div>
+        </div>
+        <!-- bayesian_network.html -->
+        <div ng-repeat="x in editor.networks" ng-if="ctrl.panel.rete_id === editor.networks[$index]" ng-init="i=$index" class="gf-form">
+            <label class="gf-form-label width-4">Node:</label>
+            <div class="gf-form-select-wrapper width-8">
+                <select class="gf-form-input"
+                        ng-model="ctrl.panel.node_id"
+                        ng-options="nodo.id for nodo in editor.networks[i].nodi"
+                        ng-change="editor.setNode(ctrl.panel.node_id)">
+                </select>
+            </div>
+        </div>
+
+        <div ng-repeat="state in editor.networks[editor.netPos].nodi[editor.nodePos].stati" ng-init="i = $index" class="gf-form">
+            <label class="gf-form-label width-6">{{state}}</label>
+            <input type="text" class="gf-form-input max-width-5"
+                   ng-model="ctrl.panel.threshold[i]"
+                   ng-value="{{editor.networks[editor.netPos].nodi[editor.nodePos].soglie[i] || ctrl.panel.threshold[i]}}"
+                   ng-change="editor.setThreshold(ctrl.panel.threshold[i], i)">
+            <!-- ***NEED TO FIX-->
+        </div>
+
+        <!--
+        <div ng-repeat="state in editor.networks[editor.netPos].nodi[editor.nodePos].stati" ng-init="i = $index" class="gf-form">
+            <label class="gf-form-label width-6">{{state}}</label>
+            <input type="text" class="gf-form-input max-width-5"
+                   ng-model="ctrl.panel.threshold"
+                   ng-value="{{editor.networks[editor.netPos].nodi[editor.nodePos].soglie[i] || ctrl.panel.threshold}}"
+                   ng-change="editor.setThreshold(ctrl.panel.threshold, i)">
+        </div>
+        -->
+    </div>
+
+    <!-- Association -->
+    <div class="section gf-form-group"ng-if="ctrl.panel.node_id && !editor.associated">
+        <h5 class="section-heading">Association</h5>
+        <div class="gf-form">
+            <span class="gf-form-label width-8">Samples</span>
+            <input type="number" class="gf-form-input max-width-5"
+                   ng-model="ctrl.panel.samples"
+                   ng-value="editor.samples"
+                   ng-change="editor.setSamples(ctrl.panel.samples)">
+            <span class="gf-form-button">
+          <button class="btn btn-inverse" ng-click="editor.associate(ctrl.panel.node_id)">
+            Associate
+          </button>
+        </span>
+        </div>
+    </div>
+
+    <!-- Saving -->
+    <div class="section gf-form-group"ng-if="ctrl.panel.node_id && !editor.associated">
+        <h5 class="section-heading">Saving</h5>
+        <div class="gf-form">
+          <button class="btn btn-success width-6" ng-click="editor.save(editor.netPos)">
+              <i class="fa fa-save"></i> Save
+          </button>
+        </div>
+    </div>
+
+    <!-- Dissociation -->
+    <div class="section gf-form-group" ng-if="ctrl.panel.node_id && editor.associated">
+        <h5 class="section-heading">Dissociation</h5>
+        <div class="gf-form-button-row">
+            <button class="btn btn-inverse" ng-click="editor.dissociate(ctrl.panel.node_id)">
+                Dissociate
+            </button>
+        </div>
+    </div>
+    <!--
+    <div class="gf-form" ng-if="ctrl.panel.node_id && editor.associated">
+        <div class="gf-form-button-row">
+            <button class="btn btn-inverse" ng-click="editor.dissociate(ctrl.panel.node_id)">
+                Dissocia
+            </button>
+        </div>
+    </div>
+    -->
+</div>
+
+
+

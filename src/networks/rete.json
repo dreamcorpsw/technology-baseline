@@ -1,0 +1,59 @@
+{
+  "rete": "rete",
+  "nodi":[
+    {
+      "id":"nodo1",
+      "stati":["low","medium","high"],
+      "soglie":[10,20,30],
+      "parents":["nodo2"],
+      "cpt": [],
+      "probs": [],
+      "panel":null
+    },
+    {
+      "id":"nodo2",
+      "stati":["true","false"],
+      "soglie":[20,40],
+      "parents":["nodo3"],
+      "cpt": [],
+      "probs": [],
+      "panel":null
+    },
+    {
+      "id":"nodo3",
+      "stati":["bad","good"],
+      "soglie":[30,60],
+      "parents":null,
+      "cpt": [],
+      "probs": [],
+      "panel":null
+    },
+    {
+      "id":"nodo4",
+      "stati":["nogood","ok","verygood"],
+      "soglie":[12,25,33],
+      "parents":null,
+      "cpt": [],
+      "probs": [],
+      "panel":null
+    },
+    {
+      "id":"nodo5",
+      "stati":["this","is","a","test"],
+      "soglie":[21,69,80,140],
+      "parents":["nodo4"],
+      "cpt": [],
+      "probs": [],
+      "panel":null
+    },
+    {
+      "id":"nodo6",
+      "stati":["How","many","threshold","do","you","want","?"],
+      "soglie":[12,20,40,60,90,145,150],
+      "parents":["nodo3","nodo5"],
+      "cpt": [],
+      "probs": [],
+      "panel":null
+    }
+  ]
+}

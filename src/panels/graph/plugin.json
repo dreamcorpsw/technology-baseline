@@ -1,0 +1,20 @@
+{
+  "type": "panel",
+  "name": "Graph",
+  "id": "standard-graph",
+
+  "info": {
+    "author": {
+      "name": "DreamCorp",
+      "url": "\"https://github.com/DreamCorpSWE"
+    },
+    "logos": {
+      "small": "img/icn-graph-panel.svg",
+      "large": "img/icn-graph-panel.svg"
+    }
+  },
+  "dependencies": {
+    "grafanaVersion": "5.4.x"
+  }
+}
+

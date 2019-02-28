@@ -1,0 +1,35 @@
+{
+  "name": "DreamCorpJson",
+  "id": "dreamcorp-json-datasource",
+  "type": "datasource",
+
+  "partials": {
+    "config": "public/app/plugins/dreamcorp-json-datasource/partials/config.html"
+  },
+
+  "metrics": true,
+  "annotations": true,
+
+  "info": {
+    "description": "DreamCorp json datasource",
+    "author": {
+      "name": "Davide Ghiotto",
+      "url": "https://grafana.com"
+    },
+    "logos": {
+      "small": "img/logo.png",
+      "large": "img/logo.png"
+    },
+    "links": [
+      {"name": "GitHub", "url": "https://github.com/grafana/simple-json-datasource"},
+      {"name": "MIT License", "url": "https://github.com/grafana/simple-json-datasource/blob/master/LICENSE"}
+    ],
+    "version": "0.0.1",
+    "updated": "2019-02-25"
+  },
+
+  "dependencies": {
+    "grafanaVersion": "5.4.x",
+    "plugins": [ ]
+  }
+}

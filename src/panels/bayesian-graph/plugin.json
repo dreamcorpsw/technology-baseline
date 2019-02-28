@@ -1,0 +1,20 @@
+{
+  "type": "panel",
+  "name": "Bayesian Graph Inherit",
+  "id": "bayesian-graph",
+
+  "info": {
+    "author": {
+      "name": "DreamCorp",
+      "url": "\"https://github.com/DreamCorpSWE"
+    },
+    "logos": {
+      "small": "img/bayesian-graph.svg",
+      "large": "img/bayesian-graph.svg"
+    }
+  },
+  "dependencies": {
+    "grafanaVersion": "5.4.x"
+  }
+}
+

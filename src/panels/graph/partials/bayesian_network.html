@@ -1,0 +1,92 @@
+<div class="editor-row">
+    <!-- Configuration -->
+    <div class="section gf-form-group" ng-if="!editor.associated">
+        <h5 class="section-heading">Configure</h5>
+
+        <div class="gf-form" >
+            <span class="gf-form-label width-10">Bayesian Network:</span>
+            <div class="gf-form-select-wrapper width-8">
+                <select  class="gf-form-input" ng-model="ctrl.panel.rete_id" ng-options="t for t in editor.nets" ng-change="editor.setNet(ctrl.panel.rete_id)"></select>
+            </div>
+        </div>
+
+        <div ng-repeat="x in editor.nets" ng-if="ctrl.panel.rete_id === editor.nets[$index]" class="gf-form">
+            <label class="gf-form-label width-4">Node:</label>
+            <div class="gf-form-select-wrapper width-8">
+                <select class="gf-form-input" ng-model="ctrl.panel.node_id" ng-options="s for s in editor.nodes[$index]" ng-change="editor.setNode(ctrl.panel.node_id)"></select>
+            </div>
+        </div>
+        <!-- Creo una serie di stati e le relative soglie-->
+        <div ng-repeat="state in editor.states_nodes[editor.nodePos]" class="gf-form">
+            <label class="gf-form-label width-6">{{state}}</label>
+            <input type="text" class="gf-form-input max-width-5"
+                   ng-model="ctrl.panel.threshold"
+                   ng-value="{{editor.threshold_nodes[editor.nodePos][$index] || ctrl.panel.threshold}}"
+                   ng-change="editor.setThreshold(ctrl.panel.threshold)">
+            <!-- Qui c'è da sistemare la modifica delle soglie, si aggiornano tutte insieme per vie del ng-model che modella
+            la stessa variabile, basta fare in modo che modelli una variabile diversa per ogni stato, oppure passo $index alla funzione-->
+        </div>
+
+        <!--
+        <div ng-repeat="x in editor.nodes[editor.nets.indexOf(ctrl.panel.rete_id)]" ng-if="ctrl.panel.node_id === editor.nodes[editor.nets.indexOf(ctrl.panel.rete_id)][$index] && !editor.associated" class="gf-form">
+            <label class="gf-form-label width-11">{{ctrl.panel.node_id}}</label>
+            <div class="gf-form-select-wrapper width-9">
+                <select class="gf-form-input" ng-model="ctrl.panel.states_node_id" ng-options="s for s in editor.states_nodes[$index]" ng-change="editor.setState(ctrl.panel.states_node_id)"></select>
+            </div>
+        </div>
+
+        <div ng-repeat="x in editor.nodes[editor.nets[editor.nets.indexOf(ctrl.panel.rete_id)]]" ng-if="ctrl.panel.node_id === editor.nodes[editor.nets[editor.nets.indexOf(ctrl.panel.rete_id)]][$index] && !editor.associated" class="gf-form">
+            <label class="gf-form-label width-11">{{ctrl.panel.node_id}}</label>
+            <div class="gf-form-select-wrapper width-9">
+                <select class="gf-form-input" ng-model="ctrl.panel.states_node_id" ng-options="s for s in editor.states_nodes[$index]"></select>
+            </div>
+        </div>
+
+        <div class="gf-form" ng-if="ctrl.panel.states_node_id && !editor.associated">
+            <span class="gf-form-label width-8">{{ctrl.panel.states_node_id}}</span>
+            <span class="gf-form-label width-8">threshold</span>
+            <input type="text" class="gf-form-input max-width-5"
+                   ng-model="ctrl.panel.threshold"
+                   ng-value="{{editor.threshold || ctrl.panel.threshold}}"
+                   ng-change="editor.setThreshold(ctrl.panel.threshold)">
+        </div>
+        -->
+    </div>
+    <!-- Association -->
+    <div class="section gf-form-group"ng-if="ctrl.panel.node_id && !editor.associated">
+        <h5 class="section-heading">Association</h5>
+        <div class="gf-form">
+            <span class="gf-form-label width-8">Samples</span>
+            <input type="number" class="gf-form-input max-width-5"
+                   ng-model="ctrl.panel.samples"
+                   ng-value="editor.samples"
+                   ng-change="editor.setSamples(ctrl.panel.samples)">
+            <span class="gf-form-button">
+          <button class="btn btn-inverse" ng-click="editor.associate(ctrl.panel.node_id)">
+            Associate
+          </button>
+        </span>
+        </div>
+    </div>
+    <!-- Dissociation -->
+    <div class="section gf-form-group" ng-if="ctrl.panel.node_id && editor.associated">
+        <h5 class="section-heading">Dissociation</h5>
+        <div class="gf-form-button-row">
+            <button class="btn btn-inverse" ng-click="editor.dissociate(ctrl.panel.node_id)">
+                Dissociate
+            </button>
+        </div>
+    </div>
+    <!--
+    <div class="gf-form" ng-if="ctrl.panel.node_id && editor.associated">
+        <div class="gf-form-button-row">
+            <button class="btn btn-inverse" ng-click="editor.dissociate(ctrl.panel.node_id)">
+                Dissocia
+            </button>
+        </div>
+    </div>
+    -->
+</div>
+
+
+
